@@ -1,41 +1,54 @@
 import java.util.*;
-class Bank{
-    private double balance;
-    public Bank(double balance)
-    {
-        this.balance=balance;
+class Bank {
+    private double balance; 
+
+    // Constructor to initialize the balance with a given amount
+    public Bank(double balance) {
+        this.balance = balance;
     }
-    public void Deposit(double deposit)
-    {
-        balance=balance+deposit;
+
+    // Method to deposit 
+    public void Deposit(double deposit) {
+        // update the balance by the deposit amount
+        balance = balance + deposit; 
     }
-    public void  Withdrawal(double withdraw)
-    {
-        if(withdraw<=balance)
-        {
-            balance=balance-withdraw;
+
+    // Method to withdraw 
+    public void Withdrawal(double withdraw) {
+        if (withdraw <= balance) { 
+            //withdrawal amount
+            balance = balance - withdraw;  
+        } else {
+            System.out.println("Not sufficient bank balance"); 
         }
-        else{
-            System.out.println("not sufficient bank balance");
-        }
     }
-    public double getBalance(){
-        return balance;
+
+    // Method to get the current balance of the account
+    public double getBalance() {
+        // Return the current balance
+        return balance; 
     }
 }
-public class BankSystem{
-    public static void main(String args[])
-    {
-        Scanner sc=new Scanner(System.in);
+
+//Main method
+public class BankSystem {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter Initial Amount: ");
-        double balance=sc.nextDouble();
-        Bank b=new Bank(balance);
+        double balance = sc.nextDouble();
+        Bank b = new Bank(balance);
+
+        // enter deposit amount 
         System.out.print("Enter Deposit Amount: ");
-        double depositAmount=sc.nextDouble();
+        double depositAmount = sc.nextDouble();
         b.Deposit(depositAmount);
+
+        // enter withdrawal amount 
         System.out.print("Enter Withdrawal Amount: ");
-        double withdrawalAmount=sc.nextDouble();
+        double withdrawalAmount = sc.nextDouble();
         b.Withdrawal(withdrawalAmount);
-        System.out.println("Available balance: "+b.getBalance());
+
+        // Display the available balance after deposit and withdrawal operations
+        System.out.println("Available balance: " + b.getBalance());
     }
 }
